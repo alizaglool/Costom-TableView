@@ -8,11 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
 
+    @IBOutlet weak var TableViewTest: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    var ArrNumber = ["Ali" , "Zaghloul" , "Elhabal" , "ElMashat" , "AbOGable"]
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ArrNumber.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let Cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        Cell.textLabel?.text = ArrNumber[indexPath.row]
+        
+        return Cell
     }
 
 
